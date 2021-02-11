@@ -10,13 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/newsletter')]
+#[Route('/admin/newsletter')]
 class NewsletterController extends AbstractController
 {
     #[Route('/', name: 'newsletter_index', methods: ['GET'])]
     public function index(NewsletterRepository $newsletterRepository): Response
     {
+        // exemple
+        $toto = "COUCOU";
+
         return $this->render('newsletter/index.html.twig', [
+            // cle        => valeur
+            // variable twig
+            'toto'        => $toto,
             'newsletters' => $newsletterRepository->findAll(),
         ]);
     }
