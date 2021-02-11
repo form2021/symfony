@@ -16,6 +16,7 @@ class NewsletterController extends AbstractController
     #[Route('/', name: 'newsletter_index', methods: ['GET'])]
     public function index(NewsletterRepository $newsletterRepository): Response
     {
+        // ICI ON VA AJOUTER NOTRE CODE PHP EN ORIENTE OBJET
         // exemple
         $toto = "COUCOU";
 
