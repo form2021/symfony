@@ -5,7 +5,6 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
@@ -15,23 +14,6 @@
         {% endblock %}
     </head>
     <body>
-        {% block monheader %}
-            <header>
-                <nav>
-                    <a href="#">accueil</a>
-                </nav>
-            </header>
-        {% endblock %}
-
-        <h1>MON TITRE1</h1>
-        {% block monbloc %}
-        <h2>MON TITRE 2</h2>
-        {% endblock %}
-
         {% block body %}{% endblock %}
-
-        <footer>
-            <p>tous droits réservés</p>
-        </footer>
     </body>
 </html>
