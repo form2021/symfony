@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/style-dev1.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-dev2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-dev3.css') }}">
+
+    {% block carte1 %}
+    {% endblock %}
+
 </head>
 <body>
     <header>
@@ -24,6 +28,9 @@
             {% endblock %}
             {% block titre2 %}
             <h1>LA MODIF QUE LE DEV2 AJOUTE et le dev2 continue à travailler sur son code</h1>
+            {% endblock %}
+
+            {% block carte2 %}
             {% endblock %}
 
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, numquam in, mollitia culpa quia nostrum eius amet modi ipsam minus inventore assumenda eum ipsum voluptates, totam quibusdam similique consequatur expedita?</p>
