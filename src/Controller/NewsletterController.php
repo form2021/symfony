@@ -13,20 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/newsletter')]
 class NewsletterController extends AbstractController
 {
-    #[Route('/', name: 'newsletter_index', methods: ['GET'])]
-    public function index(NewsletterRepository $newsletterRepository): Response
-    {
-        // ICI ON VA AJOUTER NOTRE CODE PHP EN ORIENTE OBJET
-        // exemple
-        $toto = "BONNE ANNEE DU BUFFLE DE METAL";
-
-        return $this->render('newsletter/index.html.twig', [
-            // cle        => valeur
-            // variable twig
-            'toto'        => $toto,
-            'newsletters' => $newsletterRepository->findAll(),
-        ]);
-    }
 
     #[Route('/new', name: 'newsletter_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
@@ -49,13 +35,6 @@ class NewsletterController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'newsletter_show', methods: ['GET'])]
-    public function show(Newsletter $newsletter): Response
-    {
-        return $this->render('newsletter/show.html.twig', [
-            'newsletter' => $newsletter,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'newsletter_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Newsletter $newsletter): Response
