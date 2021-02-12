@@ -18,7 +18,7 @@ class NewsletterController extends AbstractController
     {
         // ICI ON VA AJOUTER NOTRE CODE PHP EN ORIENTE OBJET
         // exemple
-        $toto = "COUCOU";
+        $toto = "BONNE ANNEE DU BUFFLE DE METAL";
 
         return $this->render('newsletter/index.html.twig', [
             // cle        => valeur
