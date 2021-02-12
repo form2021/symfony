@@ -7,3 +7,11 @@ img {
     max-height: 40vh;
     object-fit: cover;
 }
+
+.gris {
+    background-color: #cccccc;
+}
+
+.vert {
+    background-color: lightgreen;
+}

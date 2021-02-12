@@ -7,4 +7,11 @@ des blocks definis par le parent
 
 {% block titre1 %}
 <h1>Accueil PAR DEV1</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="{{ classConfirmation ?? 'gris' }}">{{ messageConfirmation ?? "texte par défaut" }}</div>
+{{ form_end(form) }}
+
 {% endblock %}
