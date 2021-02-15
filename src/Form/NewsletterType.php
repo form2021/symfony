@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+// => CONNECTE AU DOSSIER src/Form/
 
 use App\Entity\Newsletter;
 use Symfony\Component\Form\AbstractType;

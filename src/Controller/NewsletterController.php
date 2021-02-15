@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+// => CONNECTE AU DOSSIER src/Controller/
 
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;

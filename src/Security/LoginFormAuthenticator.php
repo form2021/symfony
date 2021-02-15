@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Security;
+// => CONNECTE AU DOSSIER src/Security/
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;

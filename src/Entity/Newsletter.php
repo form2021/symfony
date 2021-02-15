@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+// => CONNECTE AU DOSSIER src/Entity/
 
 use App\Repository\NewsletterRepository;
 use Doctrine\ORM\Mapping as ORM;
