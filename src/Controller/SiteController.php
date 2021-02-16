@@ -71,8 +71,12 @@ class SiteController extends AbstractController
     #[Route('/annonces', name: 'annonces', methods: ['GET'])]
     public function annonces(AnnonceRepository $annonceRepository): Response
     {
+        // https://symfony.com/doc/current/doctrine.html#fetching-objects-from-the-database
+        // $annonces = $annonceRepository->findAll();   // TROP BASIQUE CAR TRIE PAR id CROISSANT
+        $annonces = $annonceRepository->findBy([], [ "datePublication" => "DESC"]);
+
         return $this->render('site/annonces.html.twig', [
-            'annonces' => $annonceRepository->findAll(),    // SELECT * FROM annonces
+            'annonces' => $annonces,    // SELECT * FROM annonces
         ]);
     }
 

@@ -1,3 +1,13 @@
+html, body {
+    width:100%;
+    padding:0;
+    margin:0;
+    font-size:16px;
+}
+* {
+    box-sizing: border-box;
+}
+
 h1 {
     color:orange;
 }
@@ -14,4 +24,17 @@ img {
 
 .vert {
     background-color: lightgreen;
+}
+
+.annonces {
+    display: flex;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.annonces article {
+    background-color: #dddddd;
+    padding:1rem;
+    margin:0.5rem;
+    width: calc( 100% / 3 - 1rem);  /* on enleve 2x margin */
 }
