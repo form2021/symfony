@@ -123,8 +123,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             // redirection vers la page /admin
             $nomRouteRedirection = "admin";
         }
-        elseif ($this->security->isGranted("ROLE_MEMBRE")) {
-            // redirection vers la page /admin
+        elseif ($this->security->isGranted("ROLE_USER")) {
+            // redirection vers la page /membre
             $nomRouteRedirection = "membre";
         }
 
