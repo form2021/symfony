@@ -1,0 +1,23 @@
+{% extends 'parent.html.twig' %}
+
+{% block titre1 %}
+<h1>Liste des Annonces</h1>
+
+<div>
+    {% for annonce in annonces %}
+        <article>
+            <div>{{ annonce.id }}</div>
+            <h3>{{ annonce.titre }}</h3>
+            <div>{{ annonce.slug }}</div>
+            <p>{{ annonce.contenu }}</p>
+            <div>{{ annonce.image }}</div>
+            <div>{{ annonce.datePublication ? annonce.datePublication|date('Y-m-d H:i:s') : '' }}</div>
+        </article>
+    {% else %}
+        <article>
+            <div>aucune annonce n'est publiée</div>
+        </article>
+    {% endfor %}
+
+</div>
+{% endblock %}

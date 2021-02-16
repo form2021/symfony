@@ -17,13 +17,20 @@
     <header>
         <nav>
             <a href="{{ path('index') }}">accueil</a>
+            <a href="{{ path('annonces') }}">annonces</a>
             <a href="{{ path('galerie') }}">galerie</a>
             <a href="{{ path('contact') }}">contact</a>
         </nav>
-        {% if app.user %}
+        {% if is_granted('ROLE_ADMIN') %}
             <div class="mb-3">
                 Bienvenue {{ app.user.username }}, 
                 <a href="{{ path('admin') }}">admin</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        {% elseif is_granted('ROLE_USER') %}
+            <div class="mb-3">
+                Bienvenue {{ app.user.username }}, 
+                <a href="{{ path('membre') }}">espace membre</a>
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
         {% else %}
@@ -36,10 +43,8 @@
     <main>
         <section>
             {% block titre1 %}
-            <h1>MON TITRE1 DEV1</h1>
             {% endblock %}
             {% block titre2 %}
-            <h1>LA MODIF QUE LE DEV2 AJOUTE et le dev2 continue à travailler sur son code</h1>
             {% endblock %}
 
             {% block carte2 %}

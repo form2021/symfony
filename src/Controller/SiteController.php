@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
+use App\Repository\AnnonceRepository;
 
 class SiteController extends AbstractController
 {
@@ -64,6 +65,14 @@ class SiteController extends AbstractController
     {
         return $this->render('site/contact.html.twig', [
             'controller_name' => 'SiteController',
+        ]);
+    }
+
+    #[Route('/annonces', name: 'annonces', methods: ['GET'])]
+    public function annonces(AnnonceRepository $annonceRepository): Response
+    {
+        return $this->render('site/annonces.html.twig', [
+            'annonces' => $annonceRepository->findAll(),    // SELECT * FROM annonces
         ]);
     }
 

@@ -17,9 +17,14 @@
     <body>
         <header class="container">
             <nav>
+                <a href="{{ path('index') }}">accueil</a>
+        {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('annonce_index') }}">annonces</a>
                 <a href="{{ path('categorie_index') }}">catégories</a>
-                <a href="{{ path('index') }}">accueil</a>
+        {% elseif is_granted('ROLE_USER') %}
+                <a href="{{ path('annonces') }}">liste des annonces</a>
+                <a href="{{ path('membre') }}">espace membre</a>
+        {% endif %}
                 <a href="{{ path('app_logout') }}">déconnexion</a>
             </nav>
         </header>
