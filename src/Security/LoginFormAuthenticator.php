@@ -115,9 +115,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         // https://symfony.com/doc/current/security.html#hierarchical-roles
         // $userConnecte = $this->security->getUser();
         // $isAdmin = in_array("ROLE_ADMIN", $userConnecte->getRoles());
-        $isAdmin = $this->security->isGranted("ROLE_ADMIN");
         $nomRouteRedirection = "index";
-        if ($isAdmin) {
+        if ($this->security->isGranted("ROLE_ADMIN")) {
             // redirection vers la page /admin
             $nomRouteRedirection = "admin";
         }
