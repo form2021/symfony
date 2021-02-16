@@ -31,6 +31,7 @@ class AnnonceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // compléter les infos manquantes
             $annonce->setDatePublication(new \DateTime());
+            // https://symfony.com/doc/current/security.html#a-fetching-the-user-object
             // ajouter l'auteur de l'annonce avec l'utilisateur connecté
             $userConnecte = $this->getUser();
             $annonce->setUser($userConnecte);
