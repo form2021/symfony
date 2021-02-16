@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/annonce')]
+#[Route('/admin/annonce')]
 class AnnonceController extends AbstractController
 {
     #[Route('/', name: 'annonce_index', methods: ['GET'])]
