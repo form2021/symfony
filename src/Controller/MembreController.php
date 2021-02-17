@@ -111,7 +111,7 @@ class MembreController extends AbstractController
         return $this->redirectToRoute('membre');
     }
 
-    #[Route('membre/{id}/edit', name: 'membre_annonce_edit', methods: ['GET', 'POST'])]
+    #[Route('/membre/{id}/edit', name: 'membre_annonce_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Annonce $annonce, SluggerInterface $slugger): Response
     {
         $userConnecte = $this->getUser();
