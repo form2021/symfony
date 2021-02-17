@@ -4,11 +4,18 @@
 
 {% block body %}
     <h1>espace membre</h1>
+    <h2>Bienvenue {{ app.user.username }}</h2>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button class="btn btn-primary">{{ button_label|default('Publier votre annonce') }}</button>
-        <div>{{ messageConfirmation }}</div>
-    {{ form_end(form) }}
+    <section>
+        <h3>publier une annonce</h3>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary">{{ button_label|default('Publier votre annonce') }}</button>
+            <div>{{ messageConfirmation }}</div>
+        {{ form_end(form) }}
+    </section>
 
+    <section>
+        <h3>liste des vos annonces</h3>
+    </section>
 {% endblock %}
