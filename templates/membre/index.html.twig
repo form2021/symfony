@@ -16,9 +16,9 @@
     </section>
 
     <section class="container">
-        <div class="annonces">
+        <div class="annonces row">
             {% for annonce in annonces %}
-                <article>
+                <article class="col-sm-4">
                     <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
                     <div>publié par {{ annonce.user.username }}</div>
                     <p>{{ annonce.contenu }}</p>
