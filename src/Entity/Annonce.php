@@ -45,7 +45,7 @@ class Annonce
     private $datePublication;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

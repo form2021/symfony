@@ -10,9 +10,10 @@
         {% for annonce in annonces %}
             <article>
                 <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
+                <div>publié par {{ annonce.user.username }}</div>
                 <p>{{ annonce.contenu }}</p>
                 <div>{{ annonce.image }}</div>
-                <div>{{ annonce.datePublication ? annonce.datePublication|date('Y-m-d H:i:s') : '' }}</div>
+                <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
             </article>
         {% else %}
             <article>
