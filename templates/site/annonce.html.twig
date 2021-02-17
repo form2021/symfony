@@ -1,0 +1,18 @@
+{% extends 'parent.html.twig' %}
+
+{% block titre1 %}
+<h1>Une seule Annonce</h1>
+{% endblock %}
+
+{% block annonces %}
+<section class="container">
+    <div class="annonces">
+        <article>
+            <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
+            <p>{{ annonce.contenu }}</p>
+            <div>{{ annonce.image }}</div>
+            <div>{{ annonce.datePublication ? annonce.datePublication|date('Y-m-d H:i:s') : '' }}</div>
+        </article>
+    </div>
+</section>
+{% endblock %}
