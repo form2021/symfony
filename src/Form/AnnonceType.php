@@ -8,7 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 // ne pas oublier d'ajouter les use
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\File;
+// https://symfony.com/doc/current/reference/constraints/Image.html
+use Symfony\Component\Validator\Constraints\Image;
 
 
 class AnnonceType extends AbstractType
@@ -32,11 +33,9 @@ class AnnonceType extends AbstractType
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
-                    new File([
+                    new Image([
                         'maxSize' => '10240k',
-                        'mimeTypes' => [
-                        ],
-                        'mimeTypesMessage' => 'type de fichier incorrect',
+                        // on peut ajouter des contraintes sur les tailles en pixels...
                     ])
                 ],
             ])
