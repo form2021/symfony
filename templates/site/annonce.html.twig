@@ -11,7 +11,9 @@
             <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
             <div>publié par {{ annonce.user.username }}</div>
             <p>{{ annonce.contenu }}</p>
-            <div>{{ annonce.image }}</div>
+            {% if annonce.image %}
+                <div><img src="{{ asset('uploads/' ~ annonce.image) }}" class="img-fluid"></div>
+            {% endif %}
             <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
         </article>
     </div>
