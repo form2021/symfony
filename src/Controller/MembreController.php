@@ -81,4 +81,34 @@ class MembreController extends AbstractController
             'messageConfirmation' => $messageConfirmation,
         ]);
     }
+
+    #[Route('/{id}', name: 'membre_annonce_delete', methods: ['DELETE'])]
+    public function delete(Request $request, Annonce $annonce): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$annonce->getId(), $request->request->get('_token'))) {
+            // verifier que l'annonce appartient à l'utilisateur connecté
+            $userConnecte = $this->getUser();
+            $auteurAnnonce = $annonce->getUser();
+            if ($userConnecte != null && $auteurAnnonce != null) {
+                if ($userConnecte->getId() == $auteurAnnonce->getId()) {
+                    // declenche le delete de la ligne
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->remove($annonce);
+                    $entityManager->flush();
+
+                    // il faudrait aussi supprimer le fichier image
+                    // https://www.php.net/manual/fr/function.unlink.php
+                    $dossierUpload = $this->getParameter('images_directory');
+        
+                    $fichierImage = "$dossierUpload/" . $annonce->getImage();
+                    if (is_file($fichierImage)) {
+                        unlink($fichierImage);
+                    }
+                }
+            }
+        }
+
+        return $this->redirectToRoute('membre');
+    }
+
 }

@@ -18,7 +18,7 @@
     <section class="container">
         <div class="annonces row">
             {% for annonce in annonces %}
-                <article class="col-sm-4">
+                <article class="col-sm-4 mb-3">
                     <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
                     <div>publié par {{ annonce.user.username }}</div>
                     <p>{{ annonce.contenu }}</p>
@@ -28,6 +28,13 @@
                         <div>(pas d'image)</div>
                     {% endif %}
                     <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
+                    <div>
+                        <form method="post" action="{{ path('membre_annonce_delete', {'id': annonce.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annonce.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
                 </article>
             {% else %}
                 <article>
