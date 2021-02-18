@@ -15,3 +15,12 @@ des blocks definis par le parent
 {{ form_end(form) }}
 
 {% endblock %}
+
+{% block monjs %}
+<script>
+anime({
+  targets: 'h1',
+  translateX: 250
+});
+</script>
+{% endblock %}
