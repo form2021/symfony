@@ -22,11 +22,12 @@
                 <a href="{{ path('annonce_index') }}">annonces</a>
                 <a href="{{ path('user_index') }}">users</a>
                 <a href="{{ path('categorie_index') }}">catégories</a>
+                <a href="{{ path('app_logout') }}">déconnexion</a>
         {% elseif is_granted('ROLE_USER') %}
                 <a href="{{ path('annonces') }}">liste des annonces</a>
                 <a href="{{ path('membre') }}">espace membre</a>
-        {% endif %}
                 <a href="{{ path('app_logout') }}">déconnexion</a>
+        {% endif %}
             </nav>
         </header>
         <div class="container">
