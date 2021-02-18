@@ -18,21 +18,22 @@
         <nav>
             <a href="{{ path('index') }}">accueil</a>
             <a href="{{ path('annonces') }}">annonces</a>
+            <a href="{{ path('recherche') }}">recherche</a>
             <a href="{{ path('galerie') }}">galerie</a>
             <a href="{{ path('contact') }}">contact</a>
         </nav>
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.username }}, 
+            <nav class="mb-3">
+                Bienvenue {{ app.user.username }} 
                 <a href="{{ path('admin') }}">admin</a>
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
+            </nav>
         {% elseif is_granted('ROLE_USER') %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.username }}, 
+            <nav class="mb-3">
+                Bienvenue {{ app.user.username }}
                 <a href="{{ path('membre') }}">espace membre</a>
                 <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
+            </nav>
         {% else %}
             <nav>
                 <a href="{{ path('app_register') }}">créez votre compte</a>

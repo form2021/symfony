@@ -11,6 +11,17 @@ html, body {
 h1 {
     color:orange;
 }
+nav {
+    text-align: center;
+}
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding:1rem;
+}
+nav a:hover {
+    background-color: lightgreen;
+}
 
 img {
     width:100%;

@@ -90,4 +90,12 @@ class SiteController extends AbstractController
         ]);
     }
 
+    #[Route('/recherche', name: 'recherche')]
+    public function recherche(): Response
+    {
+        return $this->render('site/recherche.html.twig', [
+            'annonces' => []
+        ]);
+    }
+
 }
