@@ -2,13 +2,22 @@
 
 {% block titre1 %}
 <section class="container">
-    <h1>Chercher des Annonces</h1>
+    <div class="row">
+        <h1>Chercher des Annonces</h1>
+        <form action="" method="GET">
+            <label>
+                <strong>entrez un mot clé</strong>
+                <input type="text" name="mot" placeholder="mot-clé" required>
+                <button type="submit">envoyer la recherche</button>  
+            </label>
+        </form>
+    </div>
 </section>
 {% endblock %}
 
 {% block annonces %}
 <section class="container">
-    <h2>résultats de la recherche</h2>
+    <h2>résultats de la recherche ({{ mot ?? '' }})</h2>
     <div class="annonces">
         {% for annonce in annonces %}
             <article>

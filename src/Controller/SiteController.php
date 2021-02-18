@@ -91,10 +91,32 @@ class SiteController extends AbstractController
     }
 
     #[Route('/recherche', name: 'recherche')]
-    public function recherche(): Response
+    public function recherche(Request $request, AnnonceRepository $annonceRepository): Response
     {
+        // récupérer le mot recherché
+        // et lancer une requête SQL pour chercher les annonces 
+        // dont le titre contient le mot clé
+        $mot = $request->get('mot');
+        // DEBUG
+        dump($mot);
+        if (!empty($mot)) {
+            // on va lancer la recherche sur le mot
+            // recherche exacte
+            // $annonces = $annonceRepository->findBy([
+            //     "titre" => $mot,
+            // ], [ "datePublication" => "DESC"]);
+
+            // si on veut que le titre puisse avoir un texte en plus que le mot cherché
+            // => SQL LIKE 
+            // https://sql.sh/cours/where/like
+            $annonces = $annonceRepository->chercherMot($mot);
+
+        }
+        
+
         return $this->render('site/recherche.html.twig', [
-            'annonces' => []
+            'mot'      => $mot,
+            'annonces' => $annonces ?? [],
         ]);
     }
 

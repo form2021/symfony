@@ -19,6 +19,27 @@ class AnnonceRepository extends ServiceEntityRepository
         parent::__construct($registry, Annonce::class);
     }
 
+    // on se crée une méthode à nous pour effectuer une requête spéciale
+    // https://symfony.com/doc/current/doctrine.html#querying-for-objects-the-repository
+    public function chercherMot ($mot)
+    {
+        $entityManager = $this->getEntityManager();
+
+        // ATTENTION: REQUETE EN DQL (Doctrine Query Language)
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Annonce a
+            WHERE a.titre LIKE :titre
+            ORDER BY a.datePublication DESC'
+        )
+        ->setParameter('titre', "%$mot%");
+        // on rajoute les % pour chercher un titre qui contient le mot
+        // https://sql.sh/cours/where/like
+
+        return $query->getResult();
+
+    }
+
     // /**
     //  * @return Annonce[] Returns an array of Annonce objects
     //  */
