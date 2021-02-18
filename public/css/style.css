@@ -11,13 +11,19 @@ html, body {
 h1 {
     color:orange;
 }
+h1, h2, h3, h4 {
+    text-align: center;
+}
 nav {
     text-align: center;
 }
 nav a {
     display: inline-block;
-    text-decoration: none;
     padding:1rem;
+}
+a {
+    text-decoration: none;
+    color: #666666;
 }
 nav a:hover {
     background-color: lightgreen;
@@ -28,7 +34,9 @@ img {
     max-height: 40vh;
     object-fit: cover;
 }
-
+article img {
+    height:300px;
+}
 .gris {
     background-color: #cccccc;
 }
@@ -48,4 +56,19 @@ img {
     padding:1rem;
     margin:0.5rem;
     width: calc( 100% / 3 - 1rem);  /* on enleve 2x margin */
+}
+
+section {
+    padding:1rem;
+}
+footer {
+    padding: 2rem;
+    text-align: center;
+}
+form {
+    padding: 1rem;
+}
+.form-group label {
+    display: inline-block;
+    width: 80px;
 }

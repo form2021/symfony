@@ -16,7 +16,7 @@
     </head>
     <body>
         <header class="container">
-            <nav>
+            <nav class="navbar">
                 <a href="{{ path('index') }}">accueil</a>
         {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('annonce_index') }}">annonces</a>

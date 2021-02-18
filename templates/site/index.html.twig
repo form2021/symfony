@@ -6,8 +6,11 @@ des blocks definis par le parent
 #}
 
 {% block titre1 %}
-<h1>Accueil PAR DEV1</h1>
+<h1>Accueil</h1>
+{% endblock %}
 
+{% block annonces %}
+<h3>newsletter</h3>
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
