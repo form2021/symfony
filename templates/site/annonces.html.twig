@@ -11,6 +11,16 @@
             <article>
                 <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
                 <div>publié par {{ annonce.user.username }}</div>
+
+                {% if annonce.categories|length > 0 %}
+                <div>classé dans :</div>
+                <ul>
+                    {% for categorie in annonce.categories %}
+                        <li>{{ categorie.label }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                
                 <p>{{ annonce.contenu }}</p>
                     {% if annonce.image %}
                         <div><img src="{{ asset('uploads/' ~ annonce.image) }}" class="img-fluid"></div>
