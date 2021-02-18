@@ -20,6 +20,7 @@
                 <a href="{{ path('index') }}">accueil</a>
         {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('annonce_index') }}">annonces</a>
+                <a href="{{ path('user_index') }}">users</a>
                 <a href="{{ path('categorie_index') }}">catégories</a>
         {% elseif is_granted('ROLE_USER') %}
                 <a href="{{ path('annonces') }}">liste des annonces</a>
