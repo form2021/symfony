@@ -43,19 +43,16 @@
     </header>
     <main>
         <section>
-            {% block titre1 %}
-            {% endblock %}
-            {% block titre2 %}
-            {% endblock %}
 
-            {% block annonces %}
-            {% endblock %}
+            {% block titre1 %}{% endblock %}
+            {% block titre2 %}{% endblock %}
 
-            {% block carte2 %}
-            {% endblock %}
+            {% block body %}{% endblock %}
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, numquam in, mollitia culpa quia nostrum eius amet modi ipsam minus inventore assumenda eum ipsum voluptates, totam quibusdam similique consequatur expedita?</p>
-            <img src="{{ asset('images/photo1.jpg') }}" alt="photo1">
+            {% block annonces %}{% endblock %}
+
+            {% block carte2 %}{% endblock %}
+
         </section>
     </main>
     <footer>

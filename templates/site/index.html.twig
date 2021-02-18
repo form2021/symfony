@@ -10,12 +10,14 @@ des blocks definis par le parent
 {% endblock %}
 
 {% block annonces %}
-<h3>newsletter</h3>
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    <div class="{{ classConfirmation ?? 'gris' }}">{{ messageConfirmation ?? "texte par défaut" }}</div>
-{{ form_end(form) }}
+<section class="">
+  <h5> inscription à notre newsletter</h5>
+  {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <button class="btn">{{ button_label|default('inscription') }}</button>
+      <div class="{{ classConfirmation ?? 'gris' }}">{{ messageConfirmation ?? "texte par défaut" }}</div>
+  {{ form_end(form) }}
+</section>
 
 {% endblock %}
 
@@ -23,7 +25,7 @@ des blocks definis par le parent
 <script>
 anime({
   targets: 'h1',
-  translateX: 250
+  translateX: 50
 });
 </script>
 {% endblock %}

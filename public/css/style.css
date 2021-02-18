@@ -7,7 +7,12 @@ html, body {
 * {
     box-sizing: border-box;
 }
-
+header {
+    background-color: #cccccc;
+}
+footer {
+    background-color: #aaaaaa;
+}
 h1 {
     color:orange;
 }
@@ -38,10 +43,12 @@ article img {
     height:300px;
 }
 .gris {
+    padding:0.5rem;
     background-color: #cccccc;
 }
 
 .vert {
+    padding:0.5rem;
     background-color: lightgreen;
 }
 
@@ -70,5 +77,13 @@ form {
 }
 .form-group label {
     display: inline-block;
-    width: 80px;
+    width: 160px;
+}
+
+form > .form-group {
+    margin:0.5rem;
+}
+
+form input, form button, form textarea {
+    padding:0.5rem;
 }

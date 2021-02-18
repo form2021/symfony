@@ -15,24 +15,27 @@
         
     </head>
     <body>
-        <header class="container">
-            <nav class="navbar">
-                <a href="{{ path('index') }}">accueil</a>
+        <header class="container p-5 bg-secondary">
+            <nav class="navbar navbar-dark">
+                <a class="nav-link text-white" href="{{ path('index') }}">accueil</a>
         {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('annonce_index') }}">annonces</a>
-                <a href="{{ path('user_index') }}">users</a>
-                <a href="{{ path('categorie_index') }}">catégories</a>
-                <a href="{{ path('app_logout') }}">déconnexion</a>
+                <a class="nav-link text-white" href="{{ path('annonce_index') }}">annonces</a>
+                <a class="nav-link text-white" href="{{ path('user_index') }}">users</a>
+                <a class="nav-link text-white" href="{{ path('categorie_index') }}">catégories</a>
+                <a class="nav-link text-white" href="{{ path('app_logout') }}">déconnexion</a>
         {% elseif is_granted('ROLE_USER') %}
-                <a href="{{ path('annonces') }}">liste des annonces</a>
-                <a href="{{ path('membre') }}">espace membre</a>
-                <a href="{{ path('app_logout') }}">déconnexion</a>
+                <a class="nav-link text-white" href="{{ path('annonces') }}">liste des annonces</a>
+                <a class="nav-link text-white" href="{{ path('membre') }}">espace membre</a>
+                <a class="nav-link text-white" href="{{ path('app_logout') }}">déconnexion</a>
         {% endif %}
             </nav>
         </header>
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+        <footer class="container p-5 bg-dark text-white">
+            <p>tous droits réservés &copy;2021</p>
+        </footer>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
