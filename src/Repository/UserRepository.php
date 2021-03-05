@@ -36,6 +36,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    public function findDays($weekBefore)
+    {
+        $entityManager = $this->getEntityManager();
+
+        // ATTENTION: REQUETE EN DQL (Doctrine Query Language)
+        $query = $entityManager->createQuery(
+            "SELECT count(u.id)
+            FROM App\Entity\User u
+            WHERE u.dateCreation >= '$weekBefore'"
+        );
+
+        dump($weekBefore);
+        $result = $query->getSingleScalarResult();
+        dump($result);
+        return $result;
+
+    }
+
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

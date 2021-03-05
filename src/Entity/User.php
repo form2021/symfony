@@ -64,6 +64,11 @@ class User implements UserInterface
      */
     private $annonces;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $birthDate;
+
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
@@ -207,6 +212,18 @@ class User implements UserInterface
                 $annonce->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
 
         return $this;
     }

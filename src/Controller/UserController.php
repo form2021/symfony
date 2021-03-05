@@ -16,6 +16,9 @@ class UserController extends AbstractController
     #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+        $weekBefore = date("Y-m-d H:i:s", strtotime("-1 week"));
+        $countDays7 = $userRepository->findDays($weekBefore);
+
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
