@@ -11,6 +11,8 @@ use App\Entity\Newsletter;
 use App\Form\NewsletterType;
 use App\Repository\AnnonceRepository;
 use App\Entity\Annonce;
+use App\Repository\NewsletterRepository;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class SiteController extends AbstractController
 {
@@ -30,7 +32,7 @@ class SiteController extends AbstractController
             // ici on peut compléter les infos manquantes
             $objetDate = new \DateTime();   // objet qui contient la date actuelle
             $newsletter->setDateInscription($objetDate);
-    
+
             // on envoie les infos en base de données
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newsletter);
@@ -74,7 +76,7 @@ class SiteController extends AbstractController
     {
         // https://symfony.com/doc/current/doctrine.html#fetching-objects-from-the-database
         // $annonces = $annonceRepository->findAll();   // TROP BASIQUE CAR TRIE PAR id CROISSANT
-        $annonces = $annonceRepository->findBy([], [ "datePublication" => "DESC"]);
+        $annonces = $annonceRepository->findBy([], ["datePublication" => "DESC"]);
 
         return $this->render('site/annonces.html.twig', [
             'annonces' => $annonces,    // SELECT * FROM annonces
@@ -110,9 +112,8 @@ class SiteController extends AbstractController
             // => SQL LIKE 
             // https://sql.sh/cours/where/like
             $annonces = $annonceRepository->chercherMot($mot);
-
         }
-        
+
 
         return $this->render('site/recherche.html.twig', [
             'mot'      => $mot,
@@ -120,4 +121,37 @@ class SiteController extends AbstractController
         ]);
     }
 
+    #[Route('/recherche-ajax', name: 'recherche_ajax')]
+    public function recherche_ajax(Request $request, AnnonceRepository $annonceRepository): Response
+    {
+        // récupérer le mot recherché
+        // et lancer une requête SQL pour chercher les annonces 
+        // dont le titre contient le mot clé
+        $mot = $request->get('mot');
+        // DEBUG
+        dump($mot);
+        if (!empty($mot)) {
+            // on va lancer la recherche sur le mot
+            // recherche exacte
+            // $annonces = $annonceRepository->findBy([
+            //     "titre" => $mot,
+            // ], [ "datePublication" => "DESC"]);
+
+            // si on veut que le titre puisse avoir un texte en plus que le mot cherché
+            // => SQL LIKE 
+            // https://sql.sh/cours/where/like
+            $annonces = $annonceRepository->chercherMot($mot);
+        }
+
+        // bug symfony: supprimer cache symfony pour actualiser la serialization...
+        // https://symfony.com/doc/current/components/serializer.html#option-1-using-ignore-annotation
+        // https://symfony.com/blog/new-in-symfony-5-1-serializer-improvements
+        return $this->json(
+            [
+                'mot'      => $mot,
+                'annonces' => $annonces ?? [],
+            ],
+            //context: [AbstractNormalizer::IGNORED_ATTRIBUTES => []]
+        );
+    }
 }

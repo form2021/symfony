@@ -6,6 +6,7 @@ use App\Repository\AnnonceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
  * @ORM\Entity(repositoryClass=AnnonceRepository::class)
@@ -47,11 +48,13 @@ class Annonce
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
+     * @Ignore()
      */
     private $user;
 
     /**
      * @ORM\ManyToMany(targetEntity=Categorie::class, inversedBy="annonces")
+     * @Ignore()
      */
     private $categories;
 
@@ -125,6 +128,8 @@ class Annonce
         return $this;
     }
 
+    /**
+     */
     public function getUser(): ?User
     {
         return $this->user;
@@ -159,5 +164,25 @@ class Annonce
         $this->categories->removeElement($category);
 
         return $this;
+    }
+
+    /**
+     * astuce: 
+     * comme Symfony ne gère pas directement les relations (erreur dépendance circulaire...)
+     * ajouter une méthode getter qui fournit les infos complémentaires nécessaires...
+     */
+    public function getExtra ()
+    {
+        $cats = '';
+        foreach($this->categories as $cat) {
+            $cats .= $cat->getLabel() . ", ";
+        }
+        $cats = trim($cats, ", ");
+
+        return [ 
+            "user_id" => $this->user?->getId(), 
+            "user_username" => $this->user?->getUsername(), 
+            "categories_label"    => $cats,
+        ];
     }
 }
