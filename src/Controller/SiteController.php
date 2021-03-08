@@ -12,7 +12,7 @@ use App\Form\NewsletterType;
 use App\Repository\AnnonceRepository;
 use App\Entity\Annonce;
 use App\Repository\NewsletterRepository;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+// use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 class SiteController extends AbstractController
 {
